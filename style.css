@@ -13,11 +13,74 @@
 }
 body,
 html {
+  cursor: none;
   scrollbar-width: none;
   overflow: none;
   user-select: none;
   scroll-behavior: smooth;
+  
 }
+.cursor-cont{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(255, 255, 255);
+  z-index: 12000;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  border-radius: 50%;
+  transition:transform .1s;
+
+}
+.cursor-dot{
+  mix-blend-mode: difference;
+  position: fixed;
+  pointer-events: none;
+  height: 10px;
+  width: 10px;
+  background: rgb(255, 255, 255);
+  border-radius: 50%;
+  z-index: 12000;
+  /* transition:transform .1s; */
+}
+.cursor {
+  /* mix-blend-mode: difference; */
+	position:absolute;
+	width: 50px;
+  /* background-color: red; */
+  display: flex;
+  z-index: 12000;
+	height: 50px;
+	border-radius: 50%;
+	color:  #fff;
+	text-align: center; 
+  z-index: 100;
+  opacity: 1;
+  /* transform: translate(100px,500px); */
+  /* transform: translate(-50%,-50%); */
+  /* mix-blend-mode: difference; */
+  animation: spinZ 20s linear infinite;
+}
+	.cursor span {
+		position: absolute;
+		display: inline-block;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		text-transform: uppercase;
+		font-size: 9px;
+	}
+  @keyframes spinZ {
+    0% {
+      transform: rotateZ(360deg);
+    }
+    100% {
+      transform: rotateZ(0deg);
+    }
+  }
+
 #home,
 #projects,
 #contact {
@@ -26,6 +89,9 @@ html {
   min-height: 100vh;
   overflow: hidden;
   border-bottom: 2px solid #000;
+  z-index: 10;
+  background-color: #fff;
+
 }
 
 
@@ -35,7 +101,6 @@ html {
   z-index: 100;
   width: 100vw;
   height: 100vh;
-  background: rgb(189, 100, 100);
   transition: all 0.5s;
 }
 .menu-cont{
@@ -235,11 +300,12 @@ white-space: nowrap;
   transform: translateY(0%);
 }
 .extra img{
-  color: black;
+  color: rgb(0, 0, 0);
   padding: 10px;
   width: 50px;
   height: 50px;
   z-index: 1000;
+  mix-blend-mode: difference;
 }
 .pro-info{
   border: 1px solid;
