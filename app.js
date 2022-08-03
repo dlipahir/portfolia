@@ -42,8 +42,13 @@ function roundText(el, str) {
       }
     }
 roundText('.scroller');
+roundText('.cursor');
 
 const scrl=select(".scroller")
+
+
+const cursor= select('.cursor-cont')
+const cursorDot = select('.cursor-dot')
 
 window.addEventListener("scroll", function(){
     scrl.style.transform=`rotate(${window.scrollY * 0.15}deg)`
@@ -63,8 +68,6 @@ window.addEventListener("scroll", function(){
 
 
 
-
-
 window.addEventListener("dblclick",()=>{
     if(menu.style.left=='0%')
     menu.style.left="-100%"
@@ -73,6 +76,7 @@ window.addEventListener("dblclick",()=>{
   })
 
 if(window.innerWidth>600){
+
 const pc= select('.project-cont').offsetWidth-window.innerWidth+100;
 const horizontalscrl =gsap.timeline().to('.project-cont',{x:-pc})
 ScrollTrigger.create({
@@ -85,4 +89,20 @@ ScrollTrigger.create({
      pin:true
 })
 
+
+window.addEventListener('mousemove',(e)=>{
+  //  console.log(e.clientX,e.clientY);
+   cursor.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;
+  cursorDot.style.transform=`translate(${e.clientX-3.5}px,${e.clientY-4}px)`   
+})
+
 }
+else{
+  cursor.style.display="none";
+  cursorDot.style.display="none";
+}
+
+
+
+
+
